@@ -10,6 +10,18 @@
   },
   "devDependencies": {
     "@types/node": "^18",
-    "nuxt": "^3.4.1"
+    "@unocss/nuxt": "^0.51.4",
+    "@unocss/reset": "^0.51.4",
+    "@unocss/transformer-directives": "^0.51.6",
+    "@vueuse/core": "^10.0.2",
+    "nuxt": "^3.4.3"
+  },
+  "dependencies": {
+    "chart.js": "^4.2.1",
+    "chartjs-plugin-zoom": "^2.0.1",
+    "decimal.js": "^10.4.3",
+    "primevue": "^3.29.1",
+    "uniqolor": "^1.1.0",
+    "vue-chartjs": "^5.2.0"
   }
 }
