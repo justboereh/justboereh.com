@@ -104,9 +104,6 @@ function SelectTab({ index }: { index: number }) {
 }
 
 useHead({
-    htmlAttrs: {
-        style: 'font-size: 12px',
-    },
     title: 'Rankings: Free for Developers',
 })
 </script>
