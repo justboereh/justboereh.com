@@ -62,7 +62,7 @@ const sizeClass = computed(() => {
 
 <style scoped>
 .button {
-    @apply rounded-md transition duration-200 flex items-center gap-1 select-none;
+    @apply rounded-md transition duration-200 flex items-center gap-1 select-none overflow-hidden;
 }
 
 .button.type-default:not(.danger) {

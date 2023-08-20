@@ -3,6 +3,18 @@ import '@unocss/reset/tailwind.css'
 
 const drawerEnabled = ref(false)
 
+const drawerLinkStyle = computed(
+    () => (index) =>
+        `transition-delay: ${
+            drawerEnabled.value ? index * 100 + 400 : 400 - index * 100
+        }ms`
+)
+
+const drawerLinkClasses = computed(() => [
+    drawerEnabled.value ? '' : 'opacity-0',
+    'transition duration-200',
+])
+
 useHead({})
 </script>
 
@@ -30,9 +42,9 @@ useHead({})
             </nuxt-link>
         </nav>
 
-        <nav class="sm:hidden w-full p-2 flex justify-end select-none">
+        <nav class="sm:hidden w-full p-2 flex justify-end select-none text-3xl">
             <b-button
-                @click="drawerEnabled = !drawerEnabled"
+                @click="drawerEnabled = true"
                 type="text"
                 shape="square"
                 icon="fluent:line-horizontal-3-20-regular"
@@ -54,8 +66,72 @@ useHead({})
                     :class="[
                         drawerEnabled ? 'translate-x-0' : 'translate-x-full',
                     ]"
-                    :style="`transition-delay: ${index * 100}ms`"
+                    :style="`transition-delay: ${
+                        drawerEnabled ? index * 100 : 900 - index * 100
+                    }ms`"
                 />
+            </div>
+
+            <div
+                class="w-full h-full grid text-3xl place-items-center relative"
+                :class="[drawerEnabled ? 'pointer-events-auto' : '']"
+            >
+                <b-button
+                    @click="drawerEnabled = false"
+                    type="text"
+                    shape="square"
+                    class="absolute right-2 top-2"
+                    icon="fluent:dismiss-20-regular"
+                    :class="drawerLinkClasses"
+                    :style="drawerLinkStyle(0)"
+                />
+
+                <div class="flex flex-col gap-2 items-center">
+                    <nuxt-link
+                        to="/"
+                        @click="drawerEnabled = false"
+                        :class="drawerLinkClasses"
+                        :style="drawerLinkStyle(0)"
+                    >
+                        <b-button type="text"> Home </b-button>
+                    </nuxt-link>
+
+                    <nuxt-link
+                        to="/about"
+                        @click="drawerEnabled = false"
+                        :class="drawerLinkClasses"
+                        :style="drawerLinkStyle(1)"
+                    >
+                        <b-button type="text"> About </b-button>
+                    </nuxt-link>
+
+                    <nuxt-link
+                        to="/games"
+                        @click="drawerEnabled = false"
+                        :class="drawerLinkClasses"
+                        :style="drawerLinkStyle(2)"
+                    >
+                        <b-button type="text"> Games </b-button>
+                    </nuxt-link>
+
+                    <nuxt-link
+                        to="/projects"
+                        @click="drawerEnabled = false"
+                        :class="drawerLinkClasses"
+                        :style="drawerLinkStyle(3)"
+                    >
+                        <b-button type="text"> Projects </b-button>
+                    </nuxt-link>
+
+                    <nuxt-link
+                        to="/contact"
+                        @click="drawerEnabled = false"
+                        :class="drawerLinkClasses"
+                        :style="drawerLinkStyle(4)"
+                    >
+                        <b-button type="text"> Contact </b-button>
+                    </nuxt-link>
+                </div>
             </div>
         </div>
     </div>
