@@ -1,0 +1,1 @@
+<template>front page</template>

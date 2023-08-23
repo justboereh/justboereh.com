@@ -1,32 +1,33 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.197",
-    "@types/node": "^18",
-    "@unocss/nuxt": "^0.55.0",
-    "@unocss/reset": "^0.55.0",
-    "@unocss/transformer-directives": "^0.55.0",
-    "@vueuse/core": "^10.0.2",
-    "nuxt": "^3.6.5",
-    "nuxt-icon": "^0.5.0"
-  },
-  "dependencies": {
-    "chart.js": "^4.2.1",
-    "chartjs-plugin-zoom": "^2.0.1",
-    "dayjs": "^1.11.9",
-    "decimal.js": "^10.4.3",
-    "lodash": "^4.17.21",
-    "primeflex": "^3.3.1",
-    "primevue": "^3.29.1",
-    "uniqolor": "^1.1.0",
-    "vue-chartjs": "^5.2.0"
-  }
+    "name": "nuxt-app",
+    "private": true,
+    "scripts": {
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "deploy": "nuxt build && wrangler pages deploy dist --project-name uec-justboereh",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.14.197",
+        "@types/node": "^18",
+        "@unocss/nuxt": "^0.55.0",
+        "@unocss/reset": "^0.55.0",
+        "@unocss/transformer-directives": "^0.55.0",
+        "@vueuse/core": "^10.0.2",
+        "nuxt": "^3.6.5",
+        "nuxt-icon": "^0.5.0"
+    },
+    "dependencies": {
+        "chart.js": "^4.2.1",
+        "chartjs-plugin-zoom": "^2.0.1",
+        "dayjs": "^1.11.9",
+        "decimal.js": "^10.4.3",
+        "lodash": "^4.17.21",
+        "primeflex": "^3.3.1",
+        "primevue": "^3.29.1",
+        "uniqolor": "^1.1.0",
+        "vue-chartjs": "^5.2.0"
+    }
 }

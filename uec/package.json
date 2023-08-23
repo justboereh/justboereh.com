@@ -1,0 +1,23 @@
+{
+    "name": "nuxt-app",
+    "private": true,
+    "scripts": {
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "deploy": "nuxt build && npx wrangler pages deploy dist --project-name uec-justboereh",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare"
+    },
+    "devDependencies": {
+        "@ant-design-vue/nuxt": "^1.1.0",
+        "@nuxt/devtools": "latest",
+        "@types/node": "^18.17.3",
+        "@unocss/nuxt": "^0.55.2",
+        "@unocss/reset": "^0.55.2",
+        "@unocss/transformer-directives": "^0.55.2",
+        "@vueuse/core": "^10.3.0",
+        "nuxt": "^3.6.5",
+        "nuxt-icon": "^0.5.0"
+    }
+}

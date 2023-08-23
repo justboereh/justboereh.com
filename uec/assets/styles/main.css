@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+
+    @apply bg-dark-800 text-light-50 overflow-x-hidden;
+}
+
+h1 {
+    @apply text-4xl font-bold mb-2;
+}
+
+p {
+    @apply mb-4;
+}
