@@ -31,7 +31,7 @@ function MakeMyUECButton({ name, classes }: { name: string; classes: string }) {
         'button',
         {
             class: [
-                `border border-red px-2 h-10 rounded-md`,
+                `border border-brand-red px-2 h-10 rounded-md`,
                 classes,
                 theatre.value === name ? 'hidden' : '',
             ],
@@ -40,8 +40,11 @@ function MakeMyUECButton({ name, classes }: { name: string; classes: string }) {
         'Make My UEC'
     )
 }
-</script>
 
+useHead({
+    title: 'Select Theatre - UEC',
+})
+</script>
 <template>
     <div class="p-4">
         <div class="max-w-5xl mx-auto">

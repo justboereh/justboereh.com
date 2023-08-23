@@ -6,5 +6,5 @@ export default defineNuxtConfig({
         '@unocss/reset/tailwind.css',
         fileURLToPath(new URL('./assets/styles/main.css', import.meta.url)),
     ],
-    modules: ['@unocss/nuxt', 'nuxt-icon', '@ant-design-vue/nuxt'],
+    modules: ['@unocss/nuxt', 'nuxt-icon'],
 })

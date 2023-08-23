@@ -3,7 +3,7 @@
 body {
     font-family: 'Inter', sans-serif;
 
-    @apply bg-dark-800 text-light-50 overflow-x-hidden;
+    @apply bg-dark-900 text-light-50 overflow-x-hidden;
 }
 
 h1 {
