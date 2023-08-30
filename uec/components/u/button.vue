@@ -11,6 +11,7 @@ type Props = {
     href?: string
     target?: string
     block?: boolean
+    disabled?: boolean
 }
 
 const types: Record<ButtonTypes, string> = {
@@ -22,8 +23,8 @@ const types: Record<ButtonTypes, string> = {
 }
 const sizes: Record<ButtonSizes, string> = {
     small: 'px-2 h-6 text-sm',
-    default: 'px-4 h-10',
-    large: 'px-6 h-14 text-md',
+    default: 'px-4 h-8',
+    large: 'px-6 h-12 text-md',
 }
 
 const props = defineProps<Props>()

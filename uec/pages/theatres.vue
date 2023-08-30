@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@vueuse/core'
 import { theatres, features } from 'assets/scripts/theatres'
-import { Slots } from 'nuxt/dist/app/compat/capi'
+import { UButton } from '#components'
 
 const theatre = useLocalStorage('uec-theatre', '')
 const search = ref('')
@@ -16,28 +16,19 @@ const theatresToShow = computed(() => {
         if (x.name.toLowerCase().includes(value)) return true
         if (x.phone.toLowerCase().includes(value)) return true
         if (x.state.toLowerCase().includes(value)) return true
-        if (x.features.some((f) => f.toLowerCase().includes(value))) return true
+        if (x.features.some((f: string) => f.toLowerCase().includes(value)))
+            return true
     })
 })
 
-function Feature({ feature }: { feature: any }, { slots }: { slots: Slots }) {
-    if (!feature) return
-
-    return h('span', feature.render)
-}
-
 function MakeMyUECButton({ name, classes }: { name: string; classes: string }) {
     return h(
-        'button',
+        UButton,
         {
-            class: [
-                `border border-brand-red px-2 h-10 rounded-md`,
-                classes,
-                theatre.value === name ? 'hidden' : '',
-            ],
+            class: [classes, theatre.value === name ? '!hidden' : ''],
             onClick: () => (theatre.value = name),
         },
-        'Make My UEC'
+        () => 'Make My UEC'
     )
 }
 
@@ -69,8 +60,10 @@ useHead({
                 class="border-t border-t-dark-200 py-4 flex justify-between items-center gap-2"
             >
                 <div>
-                    <div class="flex justify-between gap-4 mb-4">
-                        <span class="text-red">{{ t.name }}</span>
+                    <div
+                        class="flex justify-between items-center gap-4 mb-4 h-8"
+                    >
+                        <span class="text-brand-red">{{ t.name }}</span>
 
                         <client-only>
                             <MakeMyUECButton

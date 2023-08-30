@@ -17,9 +17,9 @@ function Updated(target: EventTarget | null) {
 </script>
 
 <template>
-    <div :class="[block ? '' : 'w-sm']">
+    <div :class="['h-8', block ? '' : 'w-sm']">
         <input
-            class="text-whtie placeholder:text-white/50 outline-none h-10 px-4 border border-dark-50 bg-dark-500 mb-4 w-full"
+            class="text-whtie placeholder:text-white/50 outline-none h-8 px-4 border border-dark-50 bg-dark-500 w-full"
             :type="type || 'text'"
             :placeholder="placeholder"
             @input="Updated($event.target)"

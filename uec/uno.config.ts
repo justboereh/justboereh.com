@@ -3,10 +3,9 @@ import transformerDirectives from '@unocss/transformer-directives'
 
 export default defineConfig({
     transformers: [transformerDirectives()],
-
     theme: {
         colors: {
-            'brand-red': '#ee0000',
+            'brand-red': '#e90000',
         },
     },
 })
