@@ -4,135 +4,134 @@ import '@unocss/reset/tailwind.css'
 const drawerEnabled = ref(false)
 
 const drawerLinkStyle = computed(
-    () => (index) =>
-        `transition-delay: ${
-            drawerEnabled.value ? index * 100 + 400 : 400 - index * 100
-        }ms`
+	() => (index) =>
+		`transition-delay: ${
+			drawerEnabled.value ? index * 100 + 400 : 400 - index * 100
+		}ms`
 )
 
 const drawerLinkClasses = computed(() => [
-    drawerEnabled.value ? '' : 'opacity-0',
-    'transition duration-200',
+	drawerEnabled.value ? '' : 'opacity-0',
+	'transition duration-200',
 ])
 
 useHead({})
 </script>
 
 <template>
-    <div class="flex flex-col">
-        <nav class="<sm:hidden w-full p-2 flex justify-center select-none">
-            <nuxt-link to="/">
-                <b-button type="text"> Home </b-button>
-            </nuxt-link>
+	<div class="flex flex-col">
+		<nav class="<sm:hidden w-full p-2 flex justify-center select-none">
+			<nuxt-link to="/">
+				<b-button type="text"> Home </b-button>
+			</nuxt-link>
 
-            <nuxt-link to="/about">
-                <b-button type="text"> About </b-button>
-            </nuxt-link>
+			<nuxt-link to="/about">
+				<b-button type="text"> About </b-button>
+			</nuxt-link>
 
-            <nuxt-link to="/games">
-                <b-button type="text"> Games </b-button>
-            </nuxt-link>
+			<nuxt-link to="/games">
+				<b-button type="text"> Games </b-button>
+			</nuxt-link>
 
-            <nuxt-link to="/projects">
-                <b-button type="text"> Projects </b-button>
-            </nuxt-link>
+			<nuxt-link to="/works">
+				<b-button type="text"> Works </b-button>
+			</nuxt-link>
 
-            <nuxt-link to="/contact">
-                <b-button type="text"> Contact </b-button>
-            </nuxt-link>
-        </nav>
+			<nuxt-link to="/contact">
+				<b-button type="text"> Contact </b-button>
+			</nuxt-link>
+		</nav>
 
-        <nav class="sm:hidden w-full p-2 flex justify-end select-none text-3xl">
-            <b-button
-                @click="drawerEnabled = true"
-                type="text"
-                shape="square"
-                icon="fluent:line-horizontal-3-20-regular"
-            />
-        </nav>
+		<nav class="sm:hidden w-full p-4 flex justify-end select-none text-xl">
+			<b-button
+				@click="drawerEnabled = true"
+				type="text"
+			>
+				<span>•</span>
+				more
+			</b-button>
+		</nav>
 
-        <main class="p-4">
-            <slot />
-        </main>
+		<main class="p-8">
+			<slot />
+		</main>
 
-        <div
-            class="fixed top-0 left-0 right-0 bottom-0 z-1000 pointer-events-none overflow-hidden"
-        >
-            <div class="absolute grid grid-rows-7 w-full h-full">
-                <span
-                    v-for="index of 7"
-                    :key="index"
-                    class="block transform w-full bg-white transition"
-                    :class="[
-                        drawerEnabled ? 'translate-x-0' : 'translate-x-full',
-                    ]"
-                    :style="`transition-delay: ${
-                        drawerEnabled ? index * 100 : 900 - index * 100
-                    }ms`"
-                />
-            </div>
+		<div
+			class="fixed top-0 left-0 right-0 bottom-0 z-1000 pointer-events-none overflow-hidden transition duration-500"
+		>
+			<div class="absolute grid grid-rows-7 w-full h-full">
+				<span
+					v-for="index of 7"
+					:key="index"
+					class="block transform w-full bg-white transition"
+					:class="[drawerEnabled ? 'translate-x-0' : 'translate-x-full']"
+					:style="`transition-delay: ${
+						drawerEnabled ? index * 100 : 900 - index * 100
+					}ms`"
+				/>
+			</div>
 
-            <div
-                class="w-full h-full grid text-3xl place-items-center relative"
-                :class="[drawerEnabled ? 'pointer-events-auto' : '']"
-            >
-                <b-button
-                    @click="drawerEnabled = false"
-                    type="text"
-                    shape="square"
-                    class="absolute right-2 top-2"
-                    icon="fluent:dismiss-20-regular"
-                    :class="drawerLinkClasses"
-                    :style="drawerLinkStyle(0)"
-                />
+			<div
+				class="w-full h-full grid text-3xl place-items-center relative"
+				:class="[drawerEnabled ? 'pointer-events-auto' : '']"
+			>
+				<b-button
+					@click="drawerEnabled = false"
+					type="text"
+					shape="square"
+					class="absolute right-2 top-2"
+					icon="fluent:dismiss-20-regular"
+					:class="drawerLinkClasses"
+					:style="drawerLinkStyle(0)"
+				/>
 
-                <div class="flex flex-col gap-2 items-center">
-                    <nuxt-link
-                        to="/"
-                        @click="drawerEnabled = false"
-                        :class="drawerLinkClasses"
-                        :style="drawerLinkStyle(0)"
-                    >
-                        <b-button type="text"> Home </b-button>
-                    </nuxt-link>
+				<div class="flex flex-col gap-2 items-center">
+					<nuxt-link
+						to="/"
+						@click="drawerEnabled = false"
+						:class="drawerLinkClasses"
+						:style="drawerLinkStyle(0)"
+					>
+						<b-button type="text"> Home </b-button>
+					</nuxt-link>
 
-                    <nuxt-link
-                        to="/about"
-                        @click="drawerEnabled = false"
-                        :class="drawerLinkClasses"
-                        :style="drawerLinkStyle(1)"
-                    >
-                        <b-button type="text"> About </b-button>
-                    </nuxt-link>
+					<nuxt-link
+						to="/about"
+						@click="drawerEnabled = false"
+						:class="drawerLinkClasses"
+						:style="drawerLinkStyle(1)"
+					>
+						<b-button type="text"> About </b-button>
+					</nuxt-link>
 
-                    <nuxt-link
-                        to="/games"
-                        @click="drawerEnabled = false"
-                        :class="drawerLinkClasses"
-                        :style="drawerLinkStyle(2)"
-                    >
-                        <b-button type="text"> Games </b-button>
-                    </nuxt-link>
+					<nuxt-link
+						to="/games"
+						@click="drawerEnabled = false"
+						:class="drawerLinkClasses"
+						:style="drawerLinkStyle(2)"
+					>
+						<b-button type="text"> Games </b-button>
+					</nuxt-link>
 
-                    <nuxt-link
-                        to="/projects"
-                        @click="drawerEnabled = false"
-                        :class="drawerLinkClasses"
-                        :style="drawerLinkStyle(3)"
-                    >
-                        <b-button type="text"> Projects </b-button>
-                    </nuxt-link>
+					<nuxt-link
+						to="/projects"
+						@click="drawerEnabled = false"
+						:class="drawerLinkClasses"
+						:style="drawerLinkStyle(3)"
+					>
+						<b-button type="text"> Projects </b-button>
+					</nuxt-link>
 
-                    <nuxt-link
-                        to="/contact"
-                        @click="drawerEnabled = false"
-                        :class="drawerLinkClasses"
-                        :style="drawerLinkStyle(4)"
-                    >
-                        <b-button type="text"> Contact </b-button>
-                    </nuxt-link>
-                </div>
-            </div>
-        </div>
-    </div>
+					<nuxt-link
+						to="/contact"
+						@click="drawerEnabled = false"
+						:class="drawerLinkClasses"
+						:style="drawerLinkStyle(4)"
+					>
+						<b-button type="text"> Contact </b-button>
+					</nuxt-link>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
