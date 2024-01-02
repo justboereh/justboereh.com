@@ -1,36 +1,45 @@
+<script setup lang="ts">
+const c = 'cursor-pointer hover:underline underline-offset-4 text-right'
+</script>
+
 <template>
-  <div class="p-4 z-100 pointer-events-none select-none">
-    <div class="mx-auto max-w-5xl flex justify-between">
-      <svg-logo class="h-6 sm:h-8" />
+  <div class="p-4 z-1000 pointer-events-none select-none sticky">
+    <div class="mx-auto max-w-5xl flex sm:items-center justify-between">
+      <nuxt-link
+        to="#"
+        class="bg-white px-2 py-1 rounded-md h-fit pointer-events-auto shadow-xl shadow-black/25"
+      >
+        <svg-logo class="h-6 sm:h-8" />
+      </nuxt-link>
 
       <span class="flex <sm:flex-col <sm:gap-2 pointer-events-auto gap-16">
-        <button
-          class="cursor-pointer hover:underline underline-offset-4 text-right"
-          type="button"
+        <nuxt-link
+          to="#about"
+          :class="c"
         >
           About
-        </button>
+        </nuxt-link>
 
-        <button
-          class="cursor-pointer hover:underline underline-offset-4 text-right"
-          type="button"
+        <nuxt-link
+          to="#projects"
+          :class="c"
         >
           Projects
-        </button>
+        </nuxt-link>
 
-        <button
-          class="cursor-pointer hover:underline underline-offset-4 text-right"
-          type="button"
+        <nuxt-link
+          to="#contact"
+          :class="c"
         >
           Contact
-        </button>
+        </nuxt-link>
 
-        <button
-          class="cursor-pointer hover:underline underline-offset-4 text-right"
-          type="button"
+        <nuxt-link
+          to="#cv"
+          :class="c"
         >
           CV
-        </button>
+        </nuxt-link>
       </span>
     </div>
   </div>
