@@ -12,8 +12,8 @@ useHead({
 <template>
   <client-only>
     <circles />
-  </client-only>
 
-  <navigations />
-  <rollers />
+    <navigations />
+    <rollers />
+  </client-only>
 </template>
