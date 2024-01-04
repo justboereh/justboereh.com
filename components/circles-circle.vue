@@ -10,7 +10,7 @@ type Props = {
   y?: number
 }
 
-const rand = [Math.random() / 5 + 0.25, Math.random() / 5 + 0.25] as const
+const rand = [Math.random() / 2 + 0.25, Math.random() / 2 + 0.25] as const
 
 const props = defineProps<Props>()
 const isMounted = useMounted()
@@ -18,12 +18,12 @@ const { width, height } = useWindowSize()
 const value = ref(0)
 const opacity = ref(0)
 const valueTransitioned = useTransition(value, {
-  duration: 200,
+  duration: 400,
   transition: TransitionPresets.linear,
   delay: props.delay || 0,
 })
 const opacityTransitioned = useTransition(value, {
-  duration: 200,
+  duration: 400,
   transition: TransitionPresets.linear,
   delay: props.delay || 0,
 })
@@ -47,12 +47,12 @@ const style = computed<StyleValue>(() => {
 })
 
 watchOnce(isMounted, () => setTimeout(() => (opacity.value = 1), 100))
-watchDebounced(props, (v) => (value.value = v.value), { debounce: 200 })
+watchDebounced(props, (v) => (value.value = v.value))
 </script>
 
 <template>
   <div
-    class="absolute transform -translate-x-1/2 -translate-y-1/2 shadow-lg shadow-black/50"
+    class="absolute transform -translate-x-1/2 -translate-y-1/2 shadow-lg shadow-black/50 max-w-screen max-h-screen"
     :style="style"
     :v="value"
   />

@@ -1,19 +1,25 @@
 <script setup lang="ts">
-import { useMouse, useWindowSize } from '@vueuse/core'
+import { useTransition, TransitionPresets } from '@vueuse/core'
+
+const opacity = ref(0)
+const transitioned = useTransition(opacity, {
+  duration: 500,
+  transition: TransitionPresets.linear,
+})
+
+onMounted(() => setTimeout(() => (opacity.value = 1), 200))
 
 useHead({
   title: 'justboereh',
-  htmlAttrs: {
-    class: 'bg-black text-white overflow-hidden',
-  },
 })
 </script>
 
 <template>
   <client-only>
-    <circles />
+    <div :style="{ opacity: transitioned }">
+      <circles />
 
-    <navigations />
-    <rollers />
+      <rollers />
+    </div>
   </client-only>
 </template>

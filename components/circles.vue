@@ -15,10 +15,10 @@ const level = computed(() => levels.indexOf(route.hash.slice(1)))
     <circles-circle
       v-for="index of amount"
       :key="index"
-      :value="level === index ? 1 : 0"
-      :delay="level === index ? index * 50 : 0"
+      :value="level > index - 1 ? 1 : 0"
+      :delay="level === index - 1 ? (index - 1) * 50 : 0"
       :style="{ zIndex: amount * 2 + 50 }"
-      :color="gradient.getColorFromValue(index * levels.length)"
+      :color="gradient.getColorFromValue((index - 1) * levels.length)"
     />
   </div>
 </template>
